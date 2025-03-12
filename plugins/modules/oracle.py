@@ -45,7 +45,7 @@ options:
         type: bool
         default: false
     wallet_location:
-        description: Absolute path to the Oracle Wallet directory (containing `cwallet.sso`, `ewallet.p12`).
+        description: Absolute path to the Oracle Wallet directory.
         required: false
         type: str
     client_lib_dir:
@@ -115,13 +115,15 @@ def export_table_to_csv(cursor, table_name, save_path):
         return f"Failed to export table {table_name}: {str(e)}"
 
 def validate_wallet(wallet_location):
-    """Check if wallet files exist in the specified location."""
-    required_files = ["cwallet.sso", "ewallet.p12"]
-    missing_files = [f for f in required_files if not os.path.exists(os.path.join(wallet_location, f))]
+    """Check if the wallet directory exists and contains any files."""
+    if not wallet_location or not os.path.isdir(wallet_location):
+        return False, f"Wallet location '{wallet_location}' does not exist or is not a directory."
 
-    if missing_files:
-        return False, f"Missing required wallet files: {', '.join(missing_files)}"
-    
+    # Ensure that at least one file exists in the wallet directory
+    wallet_files = os.listdir(wallet_location)
+    if not wallet_files:
+        return False, f"Wallet location '{wallet_location}' is empty. No wallet files found."
+
     return True, ""
 
 def run_module():
@@ -175,9 +177,6 @@ def run_module():
 
         # Set up TCPS connection using Oracle Wallet
         if use_tcps:
-            if not wallet_location or not os.path.isdir(wallet_location):
-                module.fail_json(msg="Wallet location must be provided and must be a valid directory when using TCPS.")
-
             wallet_valid, wallet_msg = validate_wallet(wallet_location)
             if not wallet_valid:
                 module.fail_json(msg=wallet_msg)
@@ -221,4 +220,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
