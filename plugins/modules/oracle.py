@@ -67,7 +67,7 @@ options:
         type: str
 
 author:
-    - Your Name (@yourGitHubHandle)
+    - philipduncan860@gmail.com
 '''
 
 EXAMPLES = r'''
