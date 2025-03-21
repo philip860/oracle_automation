@@ -99,21 +99,38 @@ import csv
 import os
 
 def export_table_to_csv(cursor, table_name, save_path):
-    """Exports a table to a CSV file."""
+    """Exports a table to a clean CSV file: no quotes, no escaping, no padding."""
     try:
         query = f"SELECT * FROM {table_name}"
         cursor.execute(query)
+
         columns = [desc[0] for desc in cursor.description]
-        
-        with open(save_path, 'w', newline='') as csv_file:
-            writer = csv.writer(csv_file)
-            writer.writerow(columns)
-            writer.writerows(cursor.fetchall())
+
+        with open(save_path, 'w', encoding='utf-8', newline='') as csv_file:
+            # Write header line
+            csv_file.write(','.join(columns) + '\n')
+
+            for row in cursor.fetchall():
+                cleaned_row = []
+                for val in row:
+                    if val is None:
+                        cleaned_row.append('')
+                    elif isinstance(val, str):
+                        cleaned_row.append(val.rstrip())  # Remove trailing CHAR padding
+                    else:
+                        cleaned_row.append(str(val))
+                csv_file.write(','.join(cleaned_row) + '\n')
 
         return f"Table {table_name} exported successfully to {save_path}"
     except Exception as e:
         return f"Failed to export table {table_name}: {str(e)}"
 
+
+
+        return f"Table {table_name} exported successfully to {save_path}"
+    except Exception as e:
+        return f"Failed to export table {table_name}: {str(e)}"
+    
 def validate_wallet(wallet_location):
     """Check if the wallet directory exists and contains any files."""
     if not wallet_location or not os.path.isdir(wallet_location):
