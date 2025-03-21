@@ -2,9 +2,12 @@
 
 This custom Ansible module allows secure interaction with Oracle databases using the `python-oracledb` library. It supports connecting via **TCPS (SSL/TLS)** using **Oracle Wallet**, and is ideal for environments requiring encrypted Oracle access.
 
-### ✅ Current Features
-- Secure connection using Oracle Wallet and TCPS
-- Standard TCP connection support
+---
+
+## ✅ Current Features
+
+- Secure connection using Oracle Wallet and TCPS  
+- Standard TCP connection support  
 - Export full Oracle table data to a clean CSV file (no quotes, escaping, or CHAR padding)
 
 ---
@@ -23,7 +26,9 @@ You can install this module directly from Ansible Galaxy:
 
 ```bash
 ansible-galaxy collection install philip860.oracle
+```
 
+---
 
 ## ▶️ Usage Example
 
@@ -45,36 +50,43 @@ ansible-galaxy collection install philip860.oracle
         table_name: "SQA"
         save_path: "/tmp/exported_sqa.csv"
         action: "export"
+```
 
+---
 
-🧪 Parameters
-Parameter	Description	Required	Type	Default
-username	Oracle DB username	✅	str	—
-password	Oracle DB password	✅	str	—
-host	Oracle DB host	✅	str	—
-port	Oracle DB port	❌	int	1521
-service_name	Oracle service name	✅	str	—
-use_tcps	Use SSL/TLS (TCPS) with Oracle Wallet	❌	bool	false
-wallet_location	Path to Oracle Wallet for secure connections	❌	str	""
-client_lib_dir	Path to Oracle Instant Client libraries	❌	str	""
-action	Action to perform (export currently supported)	✅	str	—
-table_name	Name of table to export (required for export)	❌	str	—
-save_path	Path to save CSV file (required for export)	❌	str	—
+## 🧪 Parameters
 
+| Parameter         | Description                                      | Required | Type | Default |
+|------------------|--------------------------------------------------|----------|------|---------|
+| `username`        | Oracle DB username                               | ✅       | str  | —       |
+| `password`        | Oracle DB password                               | ✅       | str  | —       |
+| `host`            | Oracle DB host                                   | ✅       | str  | —       |
+| `port`            | Oracle DB port                                   | ❌       | int  | 1521    |
+| `service_name`    | Oracle service name                              | ✅       | str  | —       |
+| `use_tcps`        | Use SSL/TLS (TCPS) with Oracle Wallet            | ❌       | bool | false   |
+| `wallet_location` | Path to Oracle Wallet for secure connections     | ❌       | str  | ""      |
+| `client_lib_dir`  | Path to Oracle Instant Client libraries          | ❌       | str  | ""      |
+| `action`          | Action to perform (export currently supported)   | ✅       | str  | —       |
+| `table_name`      | Name of table to export (required for `export`)  | ❌       | str  | —       |
+| `save_path`       | Path to save CSV file (required for `export`)    | ❌       | str  | —       |
 
+---
 
-🚧 Coming Soon
+## 🚧 Coming Soon
 
 The following capabilities are planned for upcoming versions:
 
-    create_db — Provision new Oracle databases
-    create_table — Create new tables dynamically
-    insert — Insert row data into specified tables
-    delete — Remove specific records from Oracle tables
-    query — Run ad-hoc queries and return the results to Ansible
+- `create_db` — Provision new Oracle databases  
+- `create_table` — Create new tables dynamically  
+- `insert` — Insert row data into specified tables  
+- `delete` — Remove specific records from Oracle tables  
+- `query` — Run ad-hoc queries and return the results to Ansible  
 
 Stay tuned for more database automation power in future releases!
-👨‍💻 Author
 
-philipduncan860@gmail.com
-Licensed under GPLv3
+---
+
+## 👨‍💻 Author
+
+**philipduncan860@gmail.com**  
+Licensed under **GPLv3**
