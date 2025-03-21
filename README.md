@@ -45,3 +45,18 @@ ansible-galaxy collection install philip860.oracle
         table_name: "SQA"
         save_path: "/tmp/exported_sqa.csv"
         action: "export"
+
+
+🧪 Parameters
+Parameter	Description	Required	Type	Default
+username	Oracle DB username	✅	str	—
+password	Oracle DB password	✅	str	—
+host	Oracle DB host	✅	str	—
+port	Oracle DB port	❌	int	1521
+service_name	Oracle service name	✅	str	—
+use_tcps	Use SSL/TLS (TCPS) with Oracle Wallet	❌	bool	false
+wallet_location	Path to Oracle Wallet for secure connections	❌	str	""
+client_lib_dir	Path to Oracle Instant Client libraries	❌	str	""
+action	Action to perform (export currently supported)	✅	str	—
+table_name	Name of table to export (required for export)	❌	str	—
+save_path	Path to save CSV file (required for export)	❌	str	—
