@@ -38,7 +38,7 @@ ansible-galaxy collection install philip860.oracle
   gather_facts: no
   tasks:
     - name: Export Oracle Table to CSV
-      philip860.oracle:
+      philip860.oracle.tools:
         username: "{{ oracle_username }}"
         password: "{{ oracle_password }}"
         host: "{{ oracle_host }}"
