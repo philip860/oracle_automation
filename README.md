@@ -60,3 +60,21 @@ client_lib_dir	Path to Oracle Instant Client libraries	❌	str	""
 action	Action to perform (export currently supported)	✅	str	—
 table_name	Name of table to export (required for export)	❌	str	—
 save_path	Path to save CSV file (required for export)	❌	str	—
+
+
+
+🚧 Coming Soon
+
+The following capabilities are planned for upcoming versions:
+
+    create_db — Provision new Oracle databases
+    create_table — Create new tables dynamically
+    insert — Insert row data into specified tables
+    delete — Remove specific records from Oracle tables
+    query — Run ad-hoc queries and return the results to Ansible
+
+Stay tuned for more database automation power in future releases!
+👨‍💻 Author
+
+philipduncan860@gmail.com
+Licensed under GPLv3
