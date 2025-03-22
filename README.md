@@ -15,7 +15,7 @@ This custom Ansible module allows secure `db_action` with Oracle databases using
 ## 🔧 Requirements
 
 - Oracle Instant Client (with `libclntsh.so`)
-- `oracledb` Python package (test sucessfully with `Version 1.2.2` Latest Version: 3.0 may return "Certificate validation failure"  )
+- `oracledb` Python package (test sucessfully with `Version 1.2.2` Latest `Version 3.0.0` may return "Certificate validation failure, for some Connections!"  )
 - Oracle Wallet (for TCPS connections)
 
 ---
