@@ -110,11 +110,9 @@ Download the oracle-instantclient-sqlplus & oracle-instantclient-basic packages 
 
 ```bash
 #Navigate to URL https://www.oracle.com/database/technologies/instant-client/downloads.html
-- mkdir -p /working_dir/files
-- cp -r oracle-instantclient-sqlplus-21.12.0.0.0-1.el9.x86_64.rpm /working_dir/files
-- cp -r oracle-instantclient-basic-21.12.0.0.0-1.el9.x86_64.rpm /working_dir/files
-
- 
+mkdir -p /working_dir/files
+cp -r oracle-instantclient-sqlplus-21.12.0.0.0-1.el9.x86_64.rpm /working_dir/files
+cp -r oracle-instantclient-basic-21.12.0.0.0-1.el9.x86_64.rpm /working_dir/files
 ```
 
 
