@@ -242,6 +242,21 @@ The following capabilities are planned for upcoming versions:
 - `delete` — Remove specific records from Oracle tables  
 - `query` — Run ad-hoc queries and return the results to Ansible  
 
+
+
+## AWX Job Usage
+
+### 1. Start Oracle Export Job In AWX Server
+![Start Job](https://raw.githubusercontent.com/philip860/oracle_automation/main/screenshots/AWX-Usage.PNG)
+
+### 2. Oracle Export Job Finsihed In AWX Server
+![Initial variable prompts](https://raw.githubusercontent.com/philip860/oracle_automation/main/screenshots/successfully_completed_job.PNG)
+
+
+
+
+
+
 ---
 
 ## 👨‍💻 Author
