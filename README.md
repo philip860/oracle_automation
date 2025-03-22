@@ -116,7 +116,7 @@ Download the oracle-instantclient-sqlplus & oracle-instantclient-basic packages 
 ```
 
 
-###  Step 4: Create a bash-script `files/oracle-client-install.sh` 
+###  Step 4: Create a bash-script `files/oracle-client-install.sh` File
 
 ```txt
 #!/bin/bash
@@ -131,7 +131,7 @@ echo "Oracle Instant Client installed."
 ```
 
 
-### 🐳 Step 4: Create an `execution-environment.yml`
+### 🐳 Step 4: Create an `execution-environment.yml` File
 
 ```yaml
 ---
@@ -212,27 +212,7 @@ additional_build_steps:
      - 'RUN whoami'
      - 'RUN cat /etc/os-release'
 ```
-Dockerfile
-FROM registry.redhat.io/ansible-automation-platform-22/ee-supported-rhel8:latest
 
-# Install Oracle Instant Client
-COPY oracle-instantclient/*.rpm /tmp/
-RUN dnf install -y /tmp/oracle-instantclient*.rpm && \
-    rm -rf /tmp/oracle-instantclient*.rpm
-
-# Install Python dependencies
-COPY requirements.txt .
-RUN pip3 install --upgrade pip && pip3 install -r requirements.txt
-
-# Install Ansible collections
-COPY requirements.yml .
-RUN ansible-galaxy collection install -r requirements.yml
-
-# Optional: Add Oracle Wallet if static path is needed
-# COPY wallet/ /usr/lib/oracle/21/client64/wallet/
-```
-
-> Make sure you place the `.rpm` files for Oracle Instant Client (basic + tools) in a local `oracle-instantclient/` directory.
 
 ### 🛳️ Step 4: Build and Push the EE Container
 
