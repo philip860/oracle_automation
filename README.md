@@ -76,7 +76,9 @@ ansible-galaxy collection install philip860.oracle
 
 To run `philip860.oracle` within **AAP or AWX**, and leverage the capabilities of the module with your environment's Oracle-wallet, you'll need to create a **custom Execution Environment** (EE) with all the necessary dependencies (like Oracle Instant Client and `oracledb`). Here's how:
 
-### 🧱 Step 1: Create a `requirements.yml`
+### 🧱 Step 1: Create a `requirements.yml` 
+
+Not all these collections are required except for philip860.oracle is
 
 ```yaml
 collections:
