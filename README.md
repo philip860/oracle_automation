@@ -1,6 +1,6 @@
 # philip860.oracle — Ansible Oracle Module with SSL/TLS Support
 
-This custom Ansible module allows secure interaction with Oracle databases using the `python-oracledb` library. It supports connecting via **TCPS (SSL/TLS)** using **Oracle Wallet**, and is ideal for environments requiring encrypted Oracle access.
+This custom Ansible module allows secure interdb_action with Oracle databases using the `python-oracledb` library. It supports connecting via **TCPS (SSL/TLS)** using **Oracle Wallet**, and is ideal for environments requiring encrypted Oracle access.
 
 ---
 
@@ -49,7 +49,7 @@ ansible-galaxy collection install philip860.oracle
         client_lib_dir: "/usr/lib/oracle/21/client64/lib"
         table_name: "SQA"
         save_path: "/tmp/exported_sqa.csv"
-        action: "export"
+        db_action: "export"
 ```
 
 ---
@@ -66,7 +66,7 @@ ansible-galaxy collection install philip860.oracle
 | `use_tcps`        | Use SSL/TLS (TCPS) with Oracle Wallet            | ❌       | bool | false   |
 | `wallet_location` | Path to Oracle Wallet for secure connections     | ❌       | str  | ""      |
 | `client_lib_dir`  | Path to Oracle Instant Client libraries          | ✅       | str  | ""      |
-| `action`          | Action to perform (export currently supported)   | ✅       | str  | —       |
+| `db_action`       | Action to perform (export currently supported)   | ✅       | str  | —       |
 | `table_name`      | Name of table to export (required for `export`)  | ✅       | str  | —       |
 | `save_path`       | Path to save CSV file (required for `export`)    | ✅       | str  | —       |
 
