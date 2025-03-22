@@ -15,7 +15,7 @@ This custom Ansible module allows secure `db_action` with Oracle databases using
 ## 🔧 Requirements
 
 - Oracle Instant Client (with `libclntsh.so`)
-- `python-oracledb` Python package
+- `oracledb` Python package (test sucessfully with `Version 1.2.2` Latest Version: 3.0 may return "Certificate validation failure"  )
 - Oracle Wallet (for TCPS connections)
 
 ---
@@ -90,7 +90,7 @@ collections:
  
 ```
 
-### 🐍 Step 2: Create a `requirements.txt` (Python)
+### 🐍 Step 2: Create a `/working_dir/requirements.txt` File 
 
 ```txt
 ldap3
@@ -116,7 +116,7 @@ Download the oracle-instantclient-sqlplus & oracle-instantclient-basic packages 
 ```
 
 
-###  Step 4: Create a bash-script `files/oracle-client-install.sh` File
+###  Step 4: Create a bash-script `/working_dir/files/oracle-client-install.sh` File
 
 ```txt
 #!/bin/bash
@@ -131,7 +131,7 @@ echo "Oracle Instant Client installed."
 ```
 
 
-### 🐳 Step 4: Create an `execution-environment.yml` File
+### 🐳 Step 4: Create an `/working_dir/execution-environment.yml` File
 
 ```yaml
 ---
@@ -217,6 +217,7 @@ additional_build_steps:
 ### 🛳️ Step 4: Build and Push the EE Container
 
 ```bash
+cd /working_dir/
 podman build -t quay.io/youruser/oracle-ee:latest .
 podman push quay.io/youruser/oracle-ee:latest
 ```
