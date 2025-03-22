@@ -104,7 +104,23 @@ cryptography
 setuptools_rust
 ```
 
-### 🐳 Step 3: Create an `execution-environment.yml`
+
+### 🐍 Step 3: Create a bash-script `files/oracle-client-install.sh` (Python)
+
+```txt
+#!/bin/bash
+set -e
+
+dnf install -y libnsl2 glibc libaio libgcc libstdc++
+
+rpm -ivh /tmp/oracle-instantclient-basic-21.12.0.0.0-1.el9.x86_64.rpm /tmp/oracle-instantclient-sqlplus-21.12.0.0.0-1.el9.x86_64.rpm
+
+echo "Oracle Instant Client installed."
+
+```
+
+
+### 🐳 Step 4: Create an `execution-environment.yml`
 
 ```yaml
 ---
