@@ -78,7 +78,7 @@ To run `philip860.oracle` within **AAP or AWX**, and leverage the capabilities o
 
 ### 🧱 Step 1: Create a `requirements.yml` 
 
-Not all these collections are required except for philip860.oracle is
+Not all these collections are required except for philip860.oracle, but I like to have additional features available in my EE's.
 
 ```yaml
 collections:
