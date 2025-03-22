@@ -101,7 +101,21 @@ setuptools_rust
 ```
 
 
-### 🐍 Step 3: Create a bash-script `files/oracle-client-install.sh` (Python)
+###  Step 3: Download Oracle RPMs 
+
+Navigate to URL https://www.oracle.com/database/technologies/instant-client/downloads.html
+
+```bash
+#Navigate to URL https://www.oracle.com/database/technologies/instant-client/downloads.html
+- mkdir -p /working_dir/files
+- cp -r oracle-instantclient-sqlplus-21.12.0.0.0-1.el9.x86_64.rpm /working_dir/files
+- cp -roracle-instantclient-basic-21.12.0.0.0-1.el9.x86_64.rpm /working_dir/files
+
+ 
+```
+
+
+###  Step 4: Create a bash-script `files/oracle-client-install.sh` 
 
 ```txt
 #!/bin/bash
