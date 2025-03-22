@@ -52,8 +52,8 @@ options:
         description: Absolute path to the Oracle Instant Client library (containing `libclntsh.so`).
         required: false
         type: str
-    action:
-        description: The action to perform (e.g., 'export').
+    db_action:
+        description: The db_action to perform (e.g., 'export').
         required: true
         type: str
         choices: ['export']
@@ -83,12 +83,12 @@ EXAMPLES = r'''
     client_lib_dir: "/usr/lib/oracle/21/client64/lib"
     save_path: "/tmp/exported_db.csv"
     table_name: "SQA"
-    action: "export"
+    db_action: "export"
 '''
 
 RETURN = r'''
 message:
-    description: A summary of the action taken.
+    description: A summary of the db_action taken.
     type: str
     returned: always
 '''
@@ -153,7 +153,7 @@ def run_module():
         use_tcps=dict(type='bool', required=False, default=False),
         wallet_location=dict(type='str', required=False, default=""),
         client_lib_dir=dict(type='str', required=False, default=""),
-        action=dict(type='str', required=True, choices=['export']),
+        db_action=dict(type='str', required=True, choices=['export']),
         table_name=dict(type='str', required=False),
         save_path=dict(type='str', required=False),
     )
@@ -176,7 +176,7 @@ def run_module():
     use_tcps = module.params['use_tcps']
     wallet_location = module.params.get('wallet_location', "")
     client_lib_dir = module.params.get('client_lib_dir', "")
-    action = module.params['action']
+    db_action = module.params['db_action']
     table_name = module.params.get('table_name')
     save_path = module.params.get('save_path')
 
@@ -215,9 +215,9 @@ def run_module():
 
         cursor = connection.cursor()
 
-        if action == "export":
+        if db_action == "export":
             if not table_name or not save_path:
-                module.fail_json(msg="Both 'table_name' and 'save_path' are required for export action")
+                module.fail_json(msg="Both 'table_name' and 'save_path' are required for export db_action")
 
             message = export_table_to_csv(cursor, table_name, save_path)
             result['changed'] = True
