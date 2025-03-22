@@ -82,10 +82,6 @@ To run `philip860.oracle` within **AAP or AWX**, you'll need to create a **custo
 collections:
 - awx.awx
 - ansible.posix
-- ansible.windows
-- awx.awx
-- community.vmware
-- redhatinsights.insights
 - community.general
 - community.crypto
 - community.network
